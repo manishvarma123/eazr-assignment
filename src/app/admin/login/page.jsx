@@ -8,7 +8,7 @@ import { toast } from 'react-toastify';
 const page = () => {
 
     const [contact,setContact] = useState('');
-    const [step, setStep] = useState('two');
+    const [step, setStep] = useState('one');
     const inputRefs = useRef([]);
     const router = useRouter();
     const dispatch = useDispatch();
