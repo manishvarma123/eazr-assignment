@@ -2,12 +2,14 @@
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import React, { useEffect, useState } from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { FaUserCircle } from "react-icons/fa";
+import { setUser } from '@/redux/authSlice';
 
 const Page = () => {
     const router = useRouter();
-    const [users, setUser] = useState(null);
+    const dispatch = useDispatch();
+    const {users} = useSelector((state)=>state.auth)
 
     const { empDetails } = useSelector((state) => state.auth);
 
@@ -27,7 +29,7 @@ const Page = () => {
                 });
 
                 const json = await res.json();
-                setUser(json?.data);
+                dispatch(setUser(json?.data));
             } catch (error) {
                 console.error("Failed to fetch data", error);
             }

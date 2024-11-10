@@ -8,10 +8,10 @@ import { useSelector } from "react-redux";
 export default function Home({children}) {
   const router = useRouter();
 
-  const token = localStorage.getItem('eazr-token');
   const {empDetails} = useSelector((state)=>state.auth)
 
   useEffect(()=>{
+    const token = localStorage.getItem('eazr-token');
     if(!token || !empDetails){
       router.push('/admin/login')
     }
